@@ -17,10 +17,10 @@ export const meta = {
   description: `How to use the ${PRODUCT_NAME} Git Integrations for GitHub, GitLab, or Bitbucket to automatic deploy from your project's repository for each push and ship to production on merge to the main branch.`,
   image: `${process.env.ASSETS}/docs/git-integrations/git-push.png`,
   editUrl: 'pages/docs/v2/git-integrations/index.mdx',
-  lastEdited: '2020-04-16T03:34:45.000Z'
+  lastEdited: '2020-07-10T15:00:57.000Z'
 }
 
-​​<ProductName /> provides integrations for your [GitHub](/docs/v2/git-integrations/vercel-for-github), [GitLab](/docs/v2/git-integrations/vercel-for-gitlab), and [Bitbucket](/docs/v2/git-integrations/vercel-for-bitbucket) projects, allowing for **automatic deployments on every branch push** and merge to the default branch.
+​​<ProductName /> provides integrations for your [GitHub](/docs/v2/git-integrations/vercel-for-github), [GitLab](/docs/v2/git-integrations/vercel-for-gitlab), and [Bitbucket](/docs/v2/git-integrations/vercel-for-bitbucket) projects, allowing for **automatic deployments on every branch push** and merge to the production branch.
 
 <Image
   src={`${process.env.ASSETS}/docs/git-integrations/git-push.png`}
@@ -31,12 +31,14 @@ export const meta = {
 The <ProductName /> Git Integrations provide the following benefits:
 
 - [Preview Deployments](/docs/v2/platform/deployments#preview) for every push.
-- [Production Deployments](/docs/v2/platform/deployments#production) for the most recent changes from the default branch.
+- [Production Deployments](/docs/v2/platform/deployments#production) for the most recent changes from the [Production Branch](#production-branch).
 - Instant rollbacks when reverting changes assigned to a custom domain.
 
-The easiest way to use a Git Integration is to think of your **default branch as production**. Every time a pull/merge request is made to the default branch, <ProductName /> will **create a unique deployment**, allowing you to **view the changes in a preview environment before merging**.
+The easiest way to use a Git Integration is to think of your **`master` branch as production**. Every time a pull/merge request is made to that branch, <ProductName /> will **create a unique deployment**, allowing you to **view the changes in a preview environment before merging**.
 
-When merging to the default branch, a **Production Deployment** is made, making the latest changes available to assigned custom domains automatically.
+In this case, `master` is the Production Branch. When merging to the Production Branch, a **Production Deployment** is made, making the latest changes available to assigned custom domains automatically.
+
+You can choose to use another branch, or the default branch as the [Production Branch](#production-branch).
 
 ## Available Integrations
 
@@ -65,16 +67,16 @@ Click any Git Integration from the list below to skip to its section:
 
 ## Quick Installation
 
-You can install any Git Integration directly from your dashboard by clicking ["Import Project"](/import) followed by ["From Git Repository"](/import/git). Then from the GitHub, GitLab, or Bitbucket tabs in the "You own the Repository" section, click the "Connect" or "Install" button.
+You can install any Git Integration directly from your dashboard by clicking ["Import Project"](/import) followed by ["Import Git Repository"](/import/git). Then enter the URL of your GitHub, GitLab, or Bitbucket repository to connect and import.
 
 <Image
   src={`${process.env.ASSETS}/docs/common/github-from-existing-code.png`}
-  width={1170/2}
-  height={624/2}
+  width={1280/2}
+  height={588/2}
   shadow
   borderRadius
 />
-<Caption>The "You own the Repository" section with a prompt to install <ProductName /> for GitHub.</Caption>
+<Caption>Installing the Git Integration for a Git provider of your choice.</Caption>
 
 ## Deploying Private Git Repositories
 
@@ -85,6 +87,21 @@ If the commit author is not a member, the Deployment will be prevented and a req
 Declining the request will leave the commit undeployed. If the commit author gets accepted as a member of the Team, however, their most recent commit will resume to be deployed to <ProductName /> automatically.
 
 Commit authors will automatically be considered a part of the Team on <ProductName /> if one of the existing members connected their Personal Account on <ProductName /> with the Git account that created the commit.
+
+## Production Branch
+
+A [Production Deployment](/docs/v2/platform/deployments#production) will be created each time you merge to the **Production Branch**. When you connect a new repository to <ProductName />, `master` will be the Production Branch. If `master` doesn't exist, the default branch will be the Production Branch.
+
+You can change the configuration to Repository Default, `master`, or any other custom branch from the Git Integrations tab in your Project Settings page.
+
+<Image
+  src={`${process.env.ASSETS}/docs/common/production-branch-configuration.png`}
+  width={1492/2}
+  height={608/2}
+  shadow
+  borderRadius
+/>
+<Caption>Configuring the Production Branch of your project.</Caption>
 
 export default ({ children }) => <Doc meta={meta}>{children}</Doc>
 

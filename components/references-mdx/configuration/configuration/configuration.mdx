@@ -63,7 +63,7 @@ Specifies the [<ProductName /> Platform version](/docs/v2/platform/overview#vers
 
 **Limit**: A maximum of 64 aliases in the array.
 
-The alias or aliases are applied automatically using [<ProductName /> for GitHub](/docs/v2/git-integrations/vercel-for-github), [<ProductName /> for GitLab](/docs/v2/git-integrations/vercel-for-gitlab), or [<ProductName /> for Bitbucket](/docs/v2/git-integrations/vercel-for-bitbucket) when merging or pushing to the default branch.
+The alias or aliases are applied automatically using [<ProductName /> for GitHub](/docs/v2/git-integrations/vercel-for-github), [<ProductName /> for GitLab](/docs/v2/git-integrations/vercel-for-gitlab), or [<ProductName /> for Bitbucket](/docs/v2/git-integrations/vercel-for-bitbucket) when merging or pushing to the [Production Branch](/docs/v2/git-integrations#production-branch).
 
 You can deploy to the defined aliases using [<ProductShortName /> CLI](/download) by setting the [production deployment environment target](/docs/v2/custom-domains#deploying-with-your-domain).
 
@@ -321,8 +321,12 @@ For more information on routes, see the documentation:
 ## regions
 
 <Note type="warning">
-  Deploying Serverless Functions to multiple regions is limited to <Link href="/pricing">Enterprise plans</Link>.
-  Read more about this limit on <Link href="/docs/v2/platform/limits#serverless-function-regions">the Limits page</Link>.
+  Deploying Serverless Functions to multiple regions is limited to{' '}
+  <Link href="/pricing">Enterprise plans</Link>. Read more about this limit on{' '}
+  <Link href="/docs/v2/platform/limits#serverless-function-regions">
+    the Limits page
+  </Link>
+  .
 </Note>
 
 **Type:** `Array` of region identifier `String`.
